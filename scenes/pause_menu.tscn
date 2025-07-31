@@ -1,0 +1,132 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj8xvoqmjk0tj"]
+
+[ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
+[ext_resource type="Theme" uid="uid://5nde0l3be8rs" path="res://themes/menu_default.tres" id="2_myx47"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelPaused" type="Label" parent="."]
+layout_mode = 1
+offset_right = 225.0
+offset_bottom = 88.0
+theme = ExtResource("1_n87rw")
+text = "Paused"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_bottom = 53.0
+grow_horizontal = 0
+theme = ExtResource("2_myx47")
+text = "  X  "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_myx47")
+
+[node name="MusicHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MusicHBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 2
+
+[node name="ButtonLess" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
+layout_mode = 2
+text = " < "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MusicHBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+step = 5.0
+value = 50.0
+
+[node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
+layout_mode = 2
+text = " > "
+
+[node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "Sound effects"
+horizontal_alignment = 2
+
+[node name="ButtonLess" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+layout_mode = 2
+text = " < "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+step = 5.0
+value = 50.0
+
+[node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+layout_mode = 2
+text = " > "
+
+[node name="UiScaleHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/UiScaleHBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "UI scale"
+horizontal_alignment = 2
+
+[node name="ButtonLess" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
+layout_mode = 2
+text = " < "
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/UiScaleHBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+step = 5.0
+value = 50.0
+
+[node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
+layout_mode = 2
+text = " > "
+
+[node name="ControlsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="SaveGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save game"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuitGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit game"

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Good UI Demo"
+run/main_scene="uid://dj8xvoqmjk0tj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [rendering]
 

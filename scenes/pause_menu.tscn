@@ -26,6 +26,7 @@ anchor_right = 1.0
 offset_left = -60.0
 offset_bottom = 53.0
 grow_horizontal = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_myx47")
 text = "  X  "
 
@@ -52,17 +53,20 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " < "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MusicHBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " > "
 
 [node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -77,17 +81,20 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " < "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " > "
 
 [node name="UiScaleHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -102,25 +109,30 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " < "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/UiScaleHBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = " > "
 
 [node name="ControlsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Controls"
 
 [node name="SaveGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Save game"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
@@ -129,4 +141,5 @@ layout_mode = 2
 
 [node name="QuitGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Quit game"

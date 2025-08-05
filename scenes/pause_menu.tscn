@@ -31,10 +31,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
+focus_neighbor_left = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
+focus_neighbor_top = NodePath("../VBoxContainer/QuitGameButton")
+focus_neighbor_right = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
+focus_neighbor_bottom = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
 focus_next = NodePath("../ButtonClose")
 focus_previous = NodePath("../VBoxContainer/QuitGameButton")
 
@@ -80,6 +80,7 @@ horizontal_alignment = 2
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
@@ -101,6 +102,7 @@ layout_mode = 2
 [node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
+focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 
@@ -118,6 +120,7 @@ horizontal_alignment = 2
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
@@ -139,6 +142,7 @@ layout_mode = 2
 [node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
+focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 
@@ -156,7 +160,7 @@ horizontal_alignment = 2
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath("../HSlider")
+focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
@@ -178,7 +182,7 @@ layout_mode = 2
 [node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
-focus_neighbor_left = NodePath("../HSlider")
+focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 

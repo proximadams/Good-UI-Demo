@@ -37,6 +37,7 @@ anchor_right = 1.0
 offset_left = -60.0
 offset_bottom = 53.0
 grow_horizontal = 0
+tooltip_text = "Close the pause menu."
 focus_previous = NodePath("../VBoxContainer/QuitGameButton")
 mouse_default_cursor_shape = 2
 theme = ExtResource("2_myx47")
@@ -64,6 +65,7 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
@@ -72,12 +74,14 @@ text = " < "
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Adjust music volume."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Increase."
 mouse_default_cursor_shape = 2
 text = " > "
 
@@ -93,6 +97,7 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
@@ -101,12 +106,14 @@ text = " < "
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Adjust sound effect volume."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Increase."
 mouse_default_cursor_shape = 2
 text = " > "
 
@@ -122,6 +129,7 @@ horizontal_alignment = 2
 
 [node name="ButtonLess" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
@@ -130,23 +138,27 @@ text = " < "
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Adjust size of the UI elements."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
+tooltip_text = "Increase."
 mouse_default_cursor_shape = 2
 text = " > "
 
 [node name="ControlsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Change the game's controls."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = "Controls"
 
 [node name="SaveGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Save your progress."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = "Save game"
@@ -157,6 +169,7 @@ layout_mode = 2
 
 [node name="QuitGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Exit the game."
 focus_neighbor_left = NodePath(".")
 focus_next = NodePath("../../ButtonClose")
 mouse_default_cursor_shape = 2

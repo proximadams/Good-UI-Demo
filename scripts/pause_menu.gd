@@ -6,7 +6,6 @@ func _on_quit_game_button_pressed() -> void:
 	get_tree().quit()
 
 func _incdec_slider(sliderIndex: int, increase: bool):
-	print('sliderArr.size() = ' + str(sliderArr.size()))
 	if 0 <= sliderIndex and sliderIndex < sliderArr.size():
 		var currSlider = sliderArr[sliderIndex]
 		if increase:

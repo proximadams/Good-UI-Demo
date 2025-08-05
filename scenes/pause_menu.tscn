@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj8xvoqmjk0tj"]
+[gd_scene load_steps=7 format=3 uid="uid://dj8xvoqmjk0tj"]
 
 [ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cdjhq8iuor8v8" path="res://scripts/pause_menu.gd" id="2_5d2l8"]
 [ext_resource type="Theme" uid="uid://5nde0l3be8rs" path="res://themes/menu_default.tres" id="2_myx47"]
 [ext_resource type="Texture2D" uid="uid://dtqnsfkyvdpl8" path="res://themes/icons/close_240dp_EDE28F.svg" id="3_kukqi"]
+[ext_resource type="Texture2D" uid="uid://do27du855hiu0" path="res://themes/icons/arrow_left_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="5_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://brq8o2rf36dhy" path="res://themes/icons/arrow_right_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="6_v4r4p"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -78,7 +80,7 @@ layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
-text = " < "
+icon = ExtResource("5_7l7mv")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
@@ -99,7 +101,7 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "Increase."
 mouse_default_cursor_shape = 2
-text = " > "
+icon = ExtResource("6_v4r4p")
 
 [node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -116,7 +118,7 @@ layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
-text = " < "
+icon = ExtResource("5_7l7mv")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
@@ -137,7 +139,7 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "Increase."
 mouse_default_cursor_shape = 2
-text = " > "
+icon = ExtResource("6_v4r4p")
 
 [node name="UiScaleHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -155,7 +157,7 @@ tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
 focus_neighbor_right = NodePath("../HSlider")
 mouse_default_cursor_shape = 2
-text = " < "
+icon = ExtResource("5_7l7mv")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
@@ -177,7 +179,7 @@ layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../HSlider")
 mouse_default_cursor_shape = 2
-text = " > "
+icon = ExtResource("6_v4r4p")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj8xvoqmjk0tj"]
+[gd_scene load_steps=4 format=3 uid="uid://dj8xvoqmjk0tj"]
 
 [ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
 [ext_resource type="Theme" uid="uid://5nde0l3be8rs" path="res://themes/menu_default.tres" id="2_myx47"]
+[ext_resource type="Texture2D" uid="uid://dtqnsfkyvdpl8" path="res://themes/icons/close_240dp_EDE28F.svg" id="3_kukqi"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -10,11 +11,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_myx47")
 
 [node name="LabelPaused" type="Label" parent="."]
 layout_mode = 2
-offset_right = 225.0
-offset_bottom = 88.0
+offset_left = 10.0
+offset_right = 423.0
+offset_bottom = 147.0
 theme = ExtResource("1_n87rw")
 text = "Paused"
 
@@ -34,16 +37,15 @@ focus_previous = NodePath("../VBoxContainer/QuitGameButton")
 layout_mode = 2
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -65.0
+offset_left = -74.0
 offset_top = 5.0
 offset_right = -5.0
-offset_bottom = 58.0
+offset_bottom = 74.0
 grow_horizontal = 0
 tooltip_text = "Close the pause menu."
 focus_previous = NodePath("../VBoxContainer/QuitGameButton")
 mouse_default_cursor_shape = 2
-theme = ExtResource("2_myx47")
-text = "  X  "
+icon = ExtResource("3_kukqi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -51,16 +53,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -206.0
+offset_right = 236.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_myx47")
 
 [node name="MusicHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/MusicHBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 2
@@ -72,14 +77,20 @@ focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MusicHBoxContainer"]
+layout_mode = 2
+
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MusicHBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Adjust music volume."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MusicHBoxContainer"]
+layout_mode = 2
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
@@ -92,7 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/SoundEffectsHBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Sound effects"
 horizontal_alignment = 2
@@ -104,14 +115,20 @@ focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+layout_mode = 2
+
 [node name="HSlider" type="HSlider" parent="VBoxContainer/SoundEffectsHBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Adjust sound effect volume."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+layout_mode = 2
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
@@ -124,7 +141,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/UiScaleHBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "UI scale"
 horizontal_alignment = 2
@@ -136,14 +153,20 @@ focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = " < "
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/UiScaleHBoxContainer"]
+layout_mode = 2
+
 [node name="HSlider" type="HSlider" parent="VBoxContainer/UiScaleHBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Adjust size of the UI elements."
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/UiScaleHBoxContainer"]
+layout_mode = 2
 
 [node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2

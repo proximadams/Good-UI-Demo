@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://do27du855hiu0" path="res://themes/icons/arrow_left_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="5_7l7mv"]
 [ext_resource type="Texture2D" uid="uid://brq8o2rf36dhy" path="res://themes/icons/arrow_right_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="6_v4r4p"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_myx47")
 script = ExtResource("2_5d2l8")
+sliderArr = [NodePath("VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("VBoxContainer/UiScaleHBoxContainer/HSlider")]
 
 [node name="LabelPaused" type="Label" parent="."]
 layout_mode = 2
@@ -213,4 +214,10 @@ text = "Quit game"
 
 [connection signal="ready" from="ButtonDefaultFocus" to="ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="ButtonClose" to="." method="queue_free"]
+[connection signal="pressed" from="VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
+[connection signal="pressed" from="VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
+[connection signal="pressed" from="VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]
+[connection signal="pressed" from="VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
+[connection signal="pressed" from="VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
+[connection signal="pressed" from="VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
 [connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

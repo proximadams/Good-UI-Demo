@@ -89,10 +89,17 @@ func _get_sound_effects_arr() -> Array[AudioStreamPlayer]:
 	return result
 
 func _input(event: InputEvent) -> void:
+	# refresh ui scale if you need to
 	var focusOwner = root.gui_get_focus_owner()
 	if is_instance_valid(focusOwner) and focusOwner.name == 'UiScaleHSlider' \
 	and (uiUtil._check_was_ui_movement_input(event) or uiUtil._check_was_left_mouse_click(event)):
 		_refresh_ui_scale()
+
+	# back out of ui if you need to
+	if $Level2Controls.visible and event is InputEventJoypadButton and event.is_action_released('ui_cancel'):
+		$Level1Options.set_visible(true)
+		$Level2Controls.set_visible(false)
+		$Level1Options/CentreControls/VBoxContainer/ControlsButton.grab_focus()
 
 func try_tooltip_resize(node: Node) -> void:
 	if node is PopupPanel:

@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_myx47")
 script = ExtResource("2_5d2l8")
-sliderArr = [NodePath("VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("VBoxContainer/UiScaleHBoxContainer/HSlider")]
+sliderArr = [NodePath("CentreControls/VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider")]
 
 [node name="LabelPaused" type="Label" parent="."]
 layout_mode = 2
@@ -31,12 +31,12 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-focus_neighbor_left = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
-focus_neighbor_top = NodePath("../VBoxContainer/QuitGameButton")
-focus_neighbor_right = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
-focus_neighbor_bottom = NodePath("../VBoxContainer/MusicHBoxContainer/ButtonLess")
+focus_neighbor_left = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
+focus_neighbor_top = NodePath("../CentreControls/VBoxContainer/QuitGameButton")
+focus_neighbor_right = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
+focus_neighbor_bottom = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
 focus_next = NodePath("../ButtonClose")
-focus_previous = NodePath("../VBoxContainer/QuitGameButton")
+focus_previous = NodePath("../CentreControls/VBoxContainer/QuitGameButton")
 
 [node name="ButtonClose" type="Button" parent="."]
 layout_mode = 2
@@ -47,36 +47,47 @@ offset_top = 5.0
 offset_right = -5.0
 offset_bottom = 74.0
 grow_horizontal = 0
+pivot_offset = Vector2(69, 0)
 tooltip_text = "Close the pause menu."
 focus_neighbor_top = NodePath(".")
-focus_previous = NodePath("../VBoxContainer/QuitGameButton")
+focus_previous = NodePath("../CentreControls/VBoxContainer/QuitGameButton")
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_kukqi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CentreControls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CentreControls"]
 layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.0
+offset_left = -429.0
 offset_top = -206.0
-offset_right = 236.0
+offset_right = 429.0
 offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MusicHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MusicHBoxContainer" type="HBoxContainer" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="Label" type="Label" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="ButtonLess" type="Button" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -84,41 +95,41 @@ focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Adjust music volume."
-focus_neighbor_top = NodePath("../../../ButtonClose")
+focus_neighbor_top = NodePath("../../../../ButtonClose")
 focus_neighbor_bottom = NodePath("../../SoundEffectsHBoxContainer/HSlider")
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="VBoxContainer/MusicHBoxContainer"]
+[node name="ButtonMore" type="Button" parent="CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 
-[node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="Label" type="Label" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Sound effects"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="ButtonLess" type="Button" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -126,41 +137,41 @@ focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Adjust sound effect volume."
 focus_neighbor_top = NodePath("../../MusicHBoxContainer/HSlider")
-focus_neighbor_bottom = NodePath("../../UiScaleHBoxContainer/HSlider")
+focus_neighbor_bottom = NodePath("../../UiScaleHBoxContainer/UiScaleHSlider")
 mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="VBoxContainer/SoundEffectsHBoxContainer"]
+[node name="ButtonMore" type="Button" parent="CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 
-[node name="UiScaleHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="UiScaleHBoxContainer" type="HBoxContainer" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="Label" type="Label" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "UI scale"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="ButtonLess" type="Button" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -168,10 +179,10 @@ focus_neighbor_right = NodePath("../ButtonMore")
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="UiScaleHSlider" type="HSlider" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -182,52 +193,52 @@ mouse_default_cursor_shape = 2
 step = 5.0
 value = 50.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="VBoxContainer/UiScaleHBoxContainer"]
+[node name="ButtonMore" type="Button" parent="CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
 mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CentreControls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="ControlsButton" type="Button" parent="VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Change the game's controls."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = "Controls"
 
-[node name="SaveGameButton" type="Button" parent="VBoxContainer"]
+[node name="SaveGameButton" type="Button" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Save your progress."
 focus_neighbor_left = NodePath(".")
 mouse_default_cursor_shape = 2
 text = "Save game"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CentreControls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="QuitGameButton" type="Button" parent="VBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="CentreControls/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Exit the game."
 focus_neighbor_left = NodePath(".")
-focus_next = NodePath("../../ButtonClose")
+focus_next = NodePath("../../../ButtonClose")
 mouse_default_cursor_shape = 2
 text = "Quit game"
 
 [connection signal="ready" from="ButtonDefaultFocus" to="ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="ButtonClose" to="." method="queue_free"]
-[connection signal="pressed" from="VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
-[connection signal="pressed" from="VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
-[connection signal="pressed" from="VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]
-[connection signal="pressed" from="VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
-[connection signal="pressed" from="VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
-[connection signal="pressed" from="VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
-[connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

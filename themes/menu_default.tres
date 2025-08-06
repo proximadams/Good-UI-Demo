@@ -71,13 +71,7 @@ border_width_bottom = 30
 border_color = Color(0.35964, 0.19901, 0.377081, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6gpb"]
-content_margin_left = 80.0
-content_margin_top = 10.0
-content_margin_right = 80.0
-content_margin_bottom = 10.0
 bg_color = Color(0.0980392, 0.0431373, 0.0862745, 0.862745)
-border_width_left = 40
-border_width_right = 40
 border_color = Color(0.203922, 0.113725, 0.188235, 0)
 
 [resource]

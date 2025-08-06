@@ -117,7 +117,7 @@ focus_neighbor_left = NodePath("../CentreControls/VBoxContainer/MusicHBoxContain
 focus_neighbor_top = NodePath("../CentreControls/VBoxContainer/QuitGameButton")
 focus_neighbor_right = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
 focus_neighbor_bottom = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
-focus_next = NodePath("../ButtonClose")
+focus_next = NodePath("../CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess")
 focus_previous = NodePath("../CentreControls/VBoxContainer/QuitGameButton")
 
 [node name="ButtonClose" type="Button" parent="Level1Options"]

@@ -12,23 +12,27 @@ const MIN_UI_SCALE = 0.2
 
 @onready var tree = get_tree()
 @onready var root = tree.get_root()
-@onready var scalableControls = [$LabelPaused, $ButtonClose, $CentreControls]
+@onready var scalableControls = [$LabelPaused, $ButtonClose, $CentreControls, $GameSavedAlert]
 
 func _ready() -> void:
 	_refresh_ui_scale()
 	_connect_tooltip_signals()
 
-func _get_children_recursive_array(parentNode: Control) -> Array[Control]:
+func _get_control_children_recursive_array(parentNode: Control) -> Array[Control]:
 	var result: Array[Control] = []
 	if parentNode.get_child_count() != 0:
 		var children = parentNode.get_children()
-		result.append_array(children)
+		var controlChildren = []
 		for currChild in children:
-			result.append_array(_get_children_recursive_array(currChild))
+			if currChild is Control:
+				controlChildren.append(currChild)
+		result.append_array(controlChildren)
+		for currChild in controlChildren:
+			result.append_array(_get_control_children_recursive_array(currChild))
 	return result
 
 func _connect_tooltip_signals() -> void:
-	var childrenRecursiveArr = _get_children_recursive_array(self)
+	var childrenRecursiveArr = _get_control_children_recursive_array(self)
 	for currChild in childrenRecursiveArr:
 		if currChild.tooltip_text != '':
 			currChild.connect('child_entered_tree', try_tooltip_resize)
@@ -67,3 +71,7 @@ func try_tooltip_resize(node: Node) -> void:
 		var children = node.get_children(true)
 		for currChild in children:
 			currChild.scale = Vector2(scaleValue, scaleValue)
+
+
+func seek(extra_arg_0: float) -> void:
+	pass # Replace with function body.

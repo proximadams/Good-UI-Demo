@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj8xvoqmjk0tj"]
+[gd_scene load_steps=13 format=3 uid="uid://dj8xvoqmjk0tj"]
 
 [ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cdjhq8iuor8v8" path="res://scripts/pause_menu.gd" id="2_5d2l8"]
@@ -7,6 +7,70 @@
 [ext_resource type="Texture2D" uid="uid://do27du855hiu0" path="res://themes/icons/arrow_left_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="5_7l7mv"]
 [ext_resource type="Texture2D" uid="uid://brq8o2rf36dhy" path="res://themes/icons/arrow_right_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="6_v4r4p"]
 [ext_resource type="Script" uid="uid://da7jefir6mcf6" path="res://scenes/holdable_slider_button.gd" id="7_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://imsyay3k7dwu" path="res://themes/icons/check_circle_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="8_88e76"]
+[ext_resource type="Texture2D" uid="uid://djshwp2x6prdf" path="res://themes/icons/save_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="9_knqa7"]
+
+[sub_resource type="Animation" id="Animation_knqa7"]
+resource_name = "alert"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Check:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Save:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_71k7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Save:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Check:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71k7c"]
+_data = {
+&"RESET": SubResource("Animation_71k7c"),
+&"alert": SubResource("Animation_knqa7")
+}
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr")]
 layout_mode = 3
@@ -246,6 +310,36 @@ focus_next = NodePath("../../../ButtonClose")
 mouse_default_cursor_shape = 2
 text = "Quit game"
 
+[node name="GameSavedAlert" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Save" type="TextureRect" parent="GameSavedAlert"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -136.0
+offset_right = 136.0
+offset_bottom = -8.0
+texture = ExtResource("9_knqa7")
+
+[node name="Check" type="TextureRect" parent="GameSavedAlert"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -136.0
+offset_right = 136.0
+offset_bottom = -8.0
+texture = ExtResource("8_88e76")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameSavedAlert"]
+libraries = {
+&"": SubResource("AnimationLibrary_71k7c")
+}
+
 [connection signal="ready" from="ButtonDefaultFocus" to="ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="ButtonClose" to="." method="queue_free"]
 [connection signal="pressed" from="CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
@@ -254,4 +348,6 @@ text = "Quit game"
 [connection signal="pressed" from="CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
 [connection signal="pressed" from="CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
 [connection signal="pressed" from="CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/SaveGameButton" to="GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
+[connection signal="pressed" from="CentreControls/VBoxContainer/SaveGameButton" to="GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
 [connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

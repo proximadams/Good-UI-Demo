@@ -4,9 +4,11 @@ const REFIRE_WAIT_TIME: float = 0.5
 const REFIRE_STEP_TIME: float = 0.05
 
 @export var slider: HSlider
+@export var sliderCannotChangeSound: AudioStreamPlayer
 
 var heldTimer: float = 0.0
 var heldCount: int = 0
+var playedCannotChangeSound: bool = false
 
 @onready var increase: bool = _check_is_button_more()
 
@@ -21,6 +23,10 @@ func _process(delta: float) -> void:
 		heldTimer += delta
 		if oldHeldTimer < nextWaitTime and nextWaitTime <= heldTimer:
 			heldCount += 1
+			if not playedCannotChangeSound and ((slider.value == slider.min_value and not increase) \
+			or (slider.value == slider.max_value and increase)):
+				playedCannotChangeSound = true
+				sliderCannotChangeSound.play()
 			if increase:
 				slider.value += slider.step
 			else:
@@ -32,6 +38,7 @@ func _on_button_down():
 func _on_button_up():
 	heldTimer = 0.0
 	heldCount = 0
+	playedCannotChangeSound = false
 
 func _check_is_button_more():
 	return 'More' in self.name

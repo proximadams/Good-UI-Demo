@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj8xvoqmjk0tj"]
+[gd_scene load_steps=17 format=3 uid="uid://dj8xvoqmjk0tj"]
 
 [ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cdjhq8iuor8v8" path="res://scripts/pause_menu.gd" id="2_5d2l8"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://imsyay3k7dwu" path="res://themes/icons/check_circle_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="8_88e76"]
 [ext_resource type="Texture2D" uid="uid://djshwp2x6prdf" path="res://themes/icons/save_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="9_knqa7"]
 [ext_resource type="Texture2D" uid="uid://b25dj2eg2i520" path="res://themes/icons/arrow_back_240dp_EDE28F_FILL0_wght400_GRAD0_opsz48.svg" id="10_71k7c"]
+[ext_resource type="AudioStream" uid="uid://b8an1p0tko7xd" path="res://audio/slider_change_sound.mp3" id="10_ofnjo"]
+[ext_resource type="AudioStream" uid="uid://bccwijhxfyurs" path="res://audio/slider_cannot_change_sound.mp3" id="11_1rgno"]
 [ext_resource type="FontFile" uid="uid://c4u0gv4ake8a0" path="res://themes/fonts/LibertinusSans-Italic.ttf" id="11_cmnsq"]
 
 [sub_resource type="Animation" id="Animation_knqa7"]
@@ -74,7 +76,7 @@ _data = {
 &"alert": SubResource("Animation_knqa7")
 }
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr", "scalableControls", "scalableWindow")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr", "sliderCannotChangeSound", "scalableControls", "scalableWindow", "soundEffectsParent")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,8 +86,10 @@ grow_vertical = 2
 theme = ExtResource("2_myx47")
 script = ExtResource("2_5d2l8")
 sliderArr = [NodePath("Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider")]
+sliderCannotChangeSound = NodePath("Level1Options/SoundEffects/SliderCannotChange")
 scalableControls = [NodePath("Level1Options/LabelPaused"), NodePath("Level1Options/ButtonClose"), NodePath("Level1Options/CentreControls"), NodePath("Level1Options/GameSavedAlert"), NodePath("Level2Controls/LabelControls"), NodePath("Level2Controls/ButtonBack"), NodePath("Level2Controls/MockTextHolder")]
 scalableWindow = NodePath("Level1Options/QuitConfirmation/ConfirmationDialog")
+soundEffectsParent = NodePath("Level1Options/SoundEffects")
 
 [node name="Level1Options" type="Control" parent="."]
 anchors_preset = 0
@@ -166,7 +170,7 @@ layout_mode = 2
 text = "Music"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -175,6 +179,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
@@ -193,7 +198,7 @@ value = 50.0
 [node name="MarginContainer2" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
@@ -201,6 +206,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 layout_mode = 2
@@ -212,7 +218,7 @@ layout_mode = 2
 text = "Sound effects"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -221,6 +227,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
@@ -239,7 +246,7 @@ value = 50.0
 [node name="MarginContainer2" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
@@ -247,6 +254,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="UiScaleHBoxContainer" type="HBoxContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 layout_mode = 2
@@ -258,7 +266,7 @@ layout_mode = 2
 text = "UI scale"
 horizontal_alignment = 2
 
-[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonLess" type="Button" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Decrease."
 focus_neighbor_left = NodePath(".")
@@ -267,6 +275,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../UiScaleHSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
@@ -285,7 +294,7 @@ value = 50.0
 [node name="MarginContainer2" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer" node_paths=PackedStringArray("slider")]
+[node name="ButtonMore" type="Button" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer" node_paths=PackedStringArray("slider", "sliderCannotChangeSound")]
 layout_mode = 2
 tooltip_text = "Increase."
 focus_neighbor_left = NodePath("../ButtonLess")
@@ -293,6 +302,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../UiScaleHSlider")
+sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -395,6 +405,17 @@ ok_button_text = "  Yes  "
 dialog_text = " Quit game? "
 cancel_button_text = "  No  "
 
+[node name="SoundEffects" type="Control" parent="Level1Options"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SliderChange" type="AudioStreamPlayer" parent="Level1Options/SoundEffects"]
+stream = ExtResource("10_ofnjo")
+
+[node name="SliderCannotChange" type="AudioStreamPlayer" parent="Level1Options/SoundEffects"]
+stream = ExtResource("11_1rgno")
+
 [node name="Level2Controls" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -475,10 +496,14 @@ vertical_alignment = 1
 [connection signal="ready" from="Level1Options/ButtonDefaultFocus" to="Level1Options/ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="Level1Options/ButtonClose" to="." method="queue_free"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="." method="_refresh_sound_effects_volume"]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls/ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls" method="set_visible" binds= [true]]

@@ -1,8 +1,10 @@
 extends Control
 
 @export var sliderArr: Array[HSlider]
+@export var sliderCannotChangeSound: AudioStreamPlayer
 @export var scalableControls: Array[Control]
 @export var scalableWindow: ConfirmationDialog
+@export var soundEffectsParent: Control
 
 var uiUtil = preload('res://scripts/ui_util.gd').new()
 
@@ -12,12 +14,14 @@ const UI_SCALE_SLIDER_INDEX = 2
 
 const MIN_UI_SCALE = 0.2
 
+@onready var soundEffectsArr: Array[AudioStreamPlayer] = _get_sound_effects_arr()
 @onready var tree = get_tree()
 @onready var root = tree.get_root()
 
 func _ready() -> void:
 	_refresh_ui_scale()
 	_connect_tooltip_signals()
+	_refresh_sound_effects_volume(sliderArr[SOUND_EFFECTS_SLIDER_INDEX].value)
 
 func _get_control_children_recursive_array(parentNode: Control) -> Array[Control]:
 	var result: Array[Control] = []
@@ -42,9 +46,15 @@ func _incdec_slider(sliderIndex: int, increase: bool) -> void:
 	if 0 <= sliderIndex and sliderIndex < sliderArr.size():
 		var currSlider = sliderArr[sliderIndex]
 		if increase:
-			currSlider.value += currSlider.step
+			if currSlider.value == currSlider.max_value:
+				sliderCannotChangeSound.play()
+			else:
+				currSlider.value += currSlider.step
 		else:
-			currSlider.value -= currSlider.step
+			if currSlider.value == currSlider.min_value:
+				sliderCannotChangeSound.play()
+			else:
+				currSlider.value -= currSlider.step
 		if sliderIndex == UI_SCALE_SLIDER_INDEX:
 			_refresh_ui_scale()
 
@@ -57,6 +67,20 @@ func _refresh_ui_scale() -> void:
 	for currControl in scalableControls:
 		currControl.scale = Vector2(scaleValue, scaleValue)
 	scalableWindow.set_content_scale_factor(scaleValue)
+
+func _refresh_sound_effects_volume(value: float) -> void:
+	var valueFraction = value / sliderArr[SOUND_EFFECTS_SLIDER_INDEX].max_value
+	var volumeDB = -80.0 + (80.0 * sqrt(valueFraction))
+	for currSoundEffect in soundEffectsArr:
+		currSoundEffect.volume_db = volumeDB
+
+func _get_sound_effects_arr() -> Array[AudioStreamPlayer]:
+	var children = soundEffectsParent.get_children()
+	var result: Array[AudioStreamPlayer] = []
+	for currChild in children:
+		if currChild is AudioStreamPlayer:
+			result.append(currChild)
+	return result
 
 func _input(event: InputEvent) -> void:
 	var focusOwner = root.gui_get_focus_owner()

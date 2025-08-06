@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnnn0cn6icxtk"]
+
+[ext_resource type="AudioStream" uid="uid://cvrhckya4gaa7" path="res://audio/funk-smooth-party-stylish-379509.mp3" id="1_05ggv"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_05ggv")
+volume_db = -80.0
+parameters/looping = true
+
+[connection signal="ready" from="." to="." method="play"]

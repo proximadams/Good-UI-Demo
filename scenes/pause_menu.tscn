@@ -498,6 +498,7 @@ vertical_alignment = 1
 [connection signal="ready" from="Level1Options/ButtonDefaultFocus" to="Level1Options/ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="Level1Options/ButtonClose" to="." method="queue_free"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="." method="_refresh_music_volume"]
 [connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]

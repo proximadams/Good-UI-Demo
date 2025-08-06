@@ -21,6 +21,7 @@ const MIN_UI_SCALE = 0.2
 func _ready() -> void:
 	_refresh_ui_scale()
 	_connect_tooltip_signals()
+	_refresh_music_volume(sliderArr[MUSIC_SLIDER_INDEX].value)
 	_refresh_sound_effects_volume(sliderArr[SOUND_EFFECTS_SLIDER_INDEX].value)
 
 func _get_control_children_recursive_array(parentNode: Control) -> Array[Control]:
@@ -62,17 +63,22 @@ func _get_ui_scale_value() -> float:
 	var uiScaleSlider = sliderArr[UI_SCALE_SLIDER_INDEX]
 	return MIN_UI_SCALE + (1.0 - MIN_UI_SCALE)*(uiScaleSlider.value / uiScaleSlider.max_value)
 
-func _refresh_ui_scale() -> void:
-	var scaleValue = _get_ui_scale_value()
-	for currControl in scalableControls:
-		currControl.scale = Vector2(scaleValue, scaleValue)
-	scalableWindow.set_content_scale_factor(scaleValue)
+func _refresh_music_volume(value: float) -> void:
+	var valueFraction = value / sliderArr[MUSIC_SLIDER_INDEX].max_value
+	var volumeDB = -80.0 + (80.0 * sqrt(valueFraction))
+	Music.volume_db = volumeDB
 
 func _refresh_sound_effects_volume(value: float) -> void:
 	var valueFraction = value / sliderArr[SOUND_EFFECTS_SLIDER_INDEX].max_value
 	var volumeDB = -80.0 + (80.0 * sqrt(valueFraction))
 	for currSoundEffect in soundEffectsArr:
 		currSoundEffect.volume_db = volumeDB
+
+func _refresh_ui_scale() -> void:
+	var scaleValue = _get_ui_scale_value()
+	for currControl in scalableControls:
+		currControl.scale = Vector2(scaleValue, scaleValue)
+	scalableWindow.set_content_scale_factor(scaleValue)
 
 func _get_sound_effects_arr() -> Array[AudioStreamPlayer]:
 	var children = soundEffectsParent.get_children()

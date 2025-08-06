@@ -37,9 +37,6 @@ func _connect_tooltip_signals() -> void:
 		if currChild.tooltip_text != '':
 			currChild.connect('child_entered_tree', try_tooltip_resize)
 
-func _on_quit_game_button_pressed() -> void:
-	tree.quit()
-
 func _incdec_slider(sliderIndex: int, increase: bool) -> void:
 	if 0 <= sliderIndex and sliderIndex < sliderArr.size():
 		var currSlider = sliderArr[sliderIndex]
@@ -72,6 +69,5 @@ func try_tooltip_resize(node: Node) -> void:
 		for currChild in children:
 			currChild.scale = Vector2(scaleValue, scaleValue)
 
-
-func seek(extra_arg_0: float) -> void:
-	pass # Replace with function body.
+func quit_game() -> void:
+	tree.quit()

@@ -1,6 +1,18 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://5nde0l3be8rs"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://5nde0l3be8rs"]
 
 [ext_resource type="FontFile" uid="uid://t72y1sbqmcwr" path="res://themes/fonts/LibertinusSans-Bold.ttf" id="1_7v8yb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2vxi"]
+bg_color = Color(0.643137, 0, 0.54902, 1)
+expand_margin_left = 8.0
+expand_margin_top = 30.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0, 0, 0, 0.588235)
+shadow_size = 10000
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2633"]
+bg_color = Color(0.419608, 0, 0.486275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bk1m"]
 draw_center = false
@@ -75,6 +87,10 @@ bg_color = Color(0.0980392, 0.0431373, 0.0862745, 0.862745)
 border_color = Color(0.203922, 0.113725, 0.188235, 0)
 
 [resource]
+AcceptDialog/font_sizes/title_font_size = 32
+AcceptDialog/fonts/title_font = ExtResource("1_7v8yb")
+AcceptDialog/styles/embedded_border = SubResource("StyleBoxFlat_f2vxi")
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_e2633")
 Button/colors/font_color = Color(0.929454, 0.887578, 0.561346, 1)
 Button/colors/font_focus_color = Color(0.929412, 0.886275, 0.560784, 1)
 Button/colors/font_pressed_color = Color(0.929412, 0.886275, 0.560784, 0.780392)

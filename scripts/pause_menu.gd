@@ -13,6 +13,7 @@ const MIN_UI_SCALE = 0.2
 @onready var tree = get_tree()
 @onready var root = tree.get_root()
 @onready var scalableControls = [$LabelPaused, $ButtonClose, $CentreControls, $GameSavedAlert]
+@onready var scalableWindow = $QuitConfirmation/ConfirmationDialog
 
 func _ready() -> void:
 	_refresh_ui_scale()
@@ -55,6 +56,7 @@ func _refresh_ui_scale() -> void:
 	var scaleValue = _get_ui_scale_value()
 	for currControl in scalableControls:
 		currControl.scale = Vector2(scaleValue, scaleValue)
+	scalableWindow.set_content_scale_factor(scaleValue)
 
 func _input(event: InputEvent) -> void:
 	var focusOwner = root.gui_get_focus_owner()

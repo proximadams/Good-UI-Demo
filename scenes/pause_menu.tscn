@@ -340,7 +340,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_71k7c")
 }
 
-[node name="Control" type="Control" parent="."]
+[node name="QuitConfirmation" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -350,7 +350,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="QuitConfirmation"]
 visible = false
 clip_contents = true
 layout_mode = 1
@@ -367,7 +367,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="QuitConfirmation"]
 title = ""
 position = Vector2i(400, 300)
 size = Vector2i(368, 163)
@@ -385,7 +385,7 @@ cancel_button_text = "  No  "
 [connection signal="pressed" from="CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
 [connection signal="pressed" from="CentreControls/VBoxContainer/SaveGameButton" to="GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
 [connection signal="pressed" from="CentreControls/VBoxContainer/SaveGameButton" to="GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
-[connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="Control/ConfirmationDialog" method="popup"]
-[connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="Control/ColorRect" method="set_visible" binds= [true]]
-[connection signal="canceled" from="Control/ConfirmationDialog" to="Control/ColorRect" method="set_visible" binds= [false]]
-[connection signal="confirmed" from="Control/ConfirmationDialog" to="." method="quit_game"]
+[connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="QuitConfirmation/ConfirmationDialog" method="popup"]
+[connection signal="pressed" from="CentreControls/VBoxContainer/QuitGameButton" to="QuitConfirmation/ColorRect" method="set_visible" binds= [true]]
+[connection signal="canceled" from="QuitConfirmation/ConfirmationDialog" to="QuitConfirmation/ColorRect" method="set_visible" binds= [false]]
+[connection signal="confirmed" from="QuitConfirmation/ConfirmationDialog" to="." method="quit_game"]

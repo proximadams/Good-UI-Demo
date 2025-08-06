@@ -5,6 +5,7 @@
 [node name="Music" type="AudioStreamPlayer"]
 stream = ExtResource("1_05ggv")
 volume_db = -80.0
+stream_paused = true
 parameters/looping = true
 
 [connection signal="ready" from="." to="." method="play"]

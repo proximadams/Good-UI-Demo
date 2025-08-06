@@ -339,8 +339,6 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = 608.0
-offset_bottom = 608.0
 grow_vertical = 0
 
 [node name="Save" type="TextureRect" parent="Level1Options/GameSavedAlert"]
@@ -511,8 +509,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls/ButtonDefaultFocus" method="grab_focus"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level1Options" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls" method="set_visible" binds= [true]]
-[connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
+[connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="Level1Options/QuitConfirmation/ConfirmationDialog" method="popup"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="Level1Options/QuitConfirmation/ColorRect" method="set_visible" binds= [true]]
 [connection signal="canceled" from="Level1Options/QuitConfirmation/ConfirmationDialog" to="Level1Options/QuitConfirmation/ColorRect" method="set_visible" binds= [false]]

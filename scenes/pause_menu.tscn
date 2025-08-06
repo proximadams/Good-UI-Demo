@@ -72,7 +72,7 @@ _data = {
 &"alert": SubResource("Animation_knqa7")
 }
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("sliderArr", "scalableControls", "scalableWindow")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,6 +82,8 @@ grow_vertical = 2
 theme = ExtResource("2_myx47")
 script = ExtResource("2_5d2l8")
 sliderArr = [NodePath("CentreControls/VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider")]
+scalableControls = [NodePath("LabelPaused"), NodePath("ButtonClose"), NodePath("CentreControls"), NodePath("GameSavedAlert")]
+scalableWindow = NodePath("QuitConfirmation/ConfirmationDialog")
 
 [node name="LabelPaused" type="Label" parent="."]
 layout_mode = 2

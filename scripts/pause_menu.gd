@@ -1,6 +1,8 @@
 extends Control
 
 @export var sliderArr: Array[HSlider]
+@export var scalableControls: Array[Control]
+@export var scalableWindow: ConfirmationDialog
 
 var uiUtil = preload('res://scripts/ui_util.gd').new()
 
@@ -12,8 +14,6 @@ const MIN_UI_SCALE = 0.2
 
 @onready var tree = get_tree()
 @onready var root = tree.get_root()
-@onready var scalableControls = [$LabelPaused, $ButtonClose, $CentreControls, $GameSavedAlert]
-@onready var scalableWindow = $QuitConfirmation/ConfirmationDialog
 
 func _ready() -> void:
 	_refresh_ui_scale()

@@ -2,6 +2,8 @@ extends Control
 
 @export var sliderArr: Array[Control]
 
+var uiUtil = preload('res://scripts/ui_util.gd').new()
+
 const MUSIC_SLIDER_INDEX = 0
 const SOUND_EFFECTS_SLIDER_INDEX = 1
 const UI_SCALE_SLIDER_INDEX = 2
@@ -37,15 +39,5 @@ func _refresh_ui_scale():
 func _input(event: InputEvent) -> void:
 	var focusOwner = root.gui_get_focus_owner()
 	if is_instance_valid(focusOwner) and focusOwner.name == 'UiScaleHSlider' \
-	and (_check_was_ui_movement_input(event) or _check_was_left_mouse_click(event)):
+	and (uiUtil._check_was_ui_movement_input(event) or uiUtil._check_was_left_mouse_click(event)):
 		_refresh_ui_scale()
-
-# Utility functions TODO move to it's own file
-func _check_is_movement_input(event: InputEvent):
-	return event.is_action('ui_left') or event.is_action('ui_right') or event.is_action('ui_up') or event.is_action('ui_down')
-
-func _check_was_ui_movement_input(event: InputEvent):
-	return (event is InputEventKey or event is InputEventJoypadButton) and not event.pressed and _check_is_movement_input(event)
-
-func _check_was_left_mouse_click(event: InputEvent):
-	return event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT

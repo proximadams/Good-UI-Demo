@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dj8xvoqmjk0tj"]
+[gd_scene load_steps=22 format=3 uid="uid://dj8xvoqmjk0tj"]
 
 [ext_resource type="Theme" uid="uid://couj4xn5an16x" path="res://themes/header_label.tres" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cdjhq8iuor8v8" path="res://scripts/pause_menu.gd" id="2_5d2l8"]
@@ -13,6 +13,11 @@
 [ext_resource type="AudioStream" uid="uid://b8an1p0tko7xd" path="res://audio/slider_change_sound.mp3" id="10_ofnjo"]
 [ext_resource type="AudioStream" uid="uid://bccwijhxfyurs" path="res://audio/slider_cannot_change_sound.mp3" id="11_1rgno"]
 [ext_resource type="FontFile" uid="uid://c4u0gv4ake8a0" path="res://themes/fonts/LibertinusSans-Italic.ttf" id="11_cmnsq"]
+[ext_resource type="AudioStream" uid="uid://d28bwjh5kx51f" path="res://audio/open_options.mp3" id="14_4hnlu"]
+[ext_resource type="AudioStream" uid="uid://csreyj56tghpg" path="res://audio/open_controls.mp3" id="15_3o3g3"]
+[ext_resource type="AudioStream" uid="uid://c7j4f1fnndqia" path="res://audio/are_you_sure_sound.mp3" id="16_h5b1d"]
+[ext_resource type="AudioStream" uid="uid://dm48p3xftpkb4" path="res://audio/saved_game.mp3" id="17_avs0h"]
+[ext_resource type="AudioStream" uid="uid://e68b86o1ool" path="res://audio/button_hover.mp3" id="18_ar2xs"]
 
 [sub_resource type="Animation" id="Animation_71k7c"]
 length = 0.001
@@ -69,6 +74,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../SoundEffects/SavedGame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71k7c"]
 _data = {
@@ -86,10 +105,10 @@ grow_vertical = 2
 theme = ExtResource("2_myx47")
 script = ExtResource("2_5d2l8")
 sliderArr = [NodePath("Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider"), NodePath("Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider"), NodePath("Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider")]
-sliderCannotChangeSound = NodePath("Level1Options/SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("SoundEffects/SliderCannotChange")
 scalableControls = [NodePath("Level1Options/LabelPaused"), NodePath("Level1Options/ButtonClose"), NodePath("Level1Options/CentreControls"), NodePath("Level1Options/GameSavedAlert"), NodePath("Level2Controls/LabelControls"), NodePath("Level2Controls/ButtonBack"), NodePath("Level2Controls/MockTextHolder")]
 scalableWindow = NodePath("Level1Options/QuitConfirmation/ConfirmationDialog")
-soundEffectsParent = NodePath("Level1Options/SoundEffects")
+soundEffectsParent = NodePath("SoundEffects")
 
 [node name="Level1Options" type="Control" parent="."]
 layout_mode = 1
@@ -102,8 +121,9 @@ grow_vertical = 2
 [node name="LabelPaused" type="Label" parent="Level1Options"]
 layout_mode = 2
 offset_left = 10.0
+offset_top = 1.0
 offset_right = 423.0
-offset_bottom = 147.0
+offset_bottom = 148.0
 pivot_offset = Vector2(0, 5)
 theme = ExtResource("1_n87rw")
 text = "Paused"
@@ -179,7 +199,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer"]
 layout_mode = 2
@@ -206,7 +226,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="SoundEffectsHBoxContainer" type="HBoxContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 layout_mode = 2
@@ -227,7 +247,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer"]
 layout_mode = 2
@@ -254,7 +274,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../HSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="UiScaleHBoxContainer" type="HBoxContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 layout_mode = 2
@@ -275,7 +295,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_7l7mv")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../UiScaleHSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer"]
 layout_mode = 2
@@ -302,7 +322,7 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("6_v4r4p")
 script = ExtResource("7_1s2dm")
 slider = NodePath("../UiScaleHSlider")
-sliderCannotChangeSound = NodePath("../../../../SoundEffects/SliderCannotChange")
+sliderCannotChangeSound = NodePath("../../../../../SoundEffects/SliderCannotChange")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level1Options/CentreControls/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -403,17 +423,6 @@ ok_button_text = "  Yes  "
 dialog_text = " Quit game? "
 cancel_button_text = "  No  "
 
-[node name="SoundEffects" type="Control" parent="Level1Options"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SliderChange" type="AudioStreamPlayer" parent="Level1Options/SoundEffects"]
-stream = ExtResource("10_ofnjo")
-
-[node name="SliderCannotChange" type="AudioStreamPlayer" parent="Level1Options/SoundEffects"]
-stream = ExtResource("11_1rgno")
-
 [node name="Level2Controls" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -435,8 +444,9 @@ text = "Controls"
 [node name="ButtonDefaultFocus" type="Button" parent="Level2Controls"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 5.0
+offset_bottom = 5.0
+scale = Vector2(1e-05, 1e-05)
 focus_neighbor_left = NodePath("../ButtonBack")
 focus_neighbor_top = NodePath("../ButtonBack")
 focus_neighbor_right = NodePath("../ButtonBack")
@@ -492,30 +502,83 @@ text = "Pretend a control remapping menu is here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SoundEffects" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="SliderChange" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("10_ofnjo")
+
+[node name="SliderCannotChange" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("11_1rgno")
+
+[node name="OpenOptions" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("14_4hnlu")
+
+[node name="OpenControls" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("15_3o3g3")
+
+[node name="AreYouSure" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("16_h5b1d")
+
+[node name="SavedGame" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("17_avs0h")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("18_ar2xs")
+
 [connection signal="tree_entered" from="Level1Options" to="Level1Options" method="set_visible" binds= [true]]
 [connection signal="ready" from="Level1Options/ButtonDefaultFocus" to="Level1Options/ButtonDefaultFocus" method="grab_focus"]
+[connection signal="focus_entered" from="Level1Options/ButtonClose" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/ButtonClose" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/ButtonClose" to="." method="queue_free"]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [0, false]]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="." method="_refresh_music_volume"]
-[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/HSlider" to="SoundEffects/SliderChange" method="play"]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/MusicHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [0, true]]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [1, false]]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="." method="_refresh_sound_effects_volume"]
-[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/HSlider" to="SoundEffects/SliderChange" method="play"]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SoundEffectsHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [1, true]]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonLess" to="." method="_incdec_slider" binds= [2, false]]
-[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider" to="Level1Options/SoundEffects/SliderChange" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="value_changed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/UiScaleHSlider" to="SoundEffects/SliderChange" method="play"]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/UiScaleHBoxContainer/ButtonMore" to="." method="_incdec_slider" binds= [2, true]]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls/ButtonDefaultFocus" method="grab_focus"]
+[connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="SoundEffects/OpenControls" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level1Options" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls" method="set_visible" binds= [true]]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
+[connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="Level1Options/QuitConfirmation/ConfirmationDialog" method="popup"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="Level1Options/QuitConfirmation/ColorRect" method="set_visible" binds= [true]]
+[connection signal="about_to_popup" from="Level1Options/QuitConfirmation/ConfirmationDialog" to="SoundEffects/AreYouSure" method="play"]
+[connection signal="canceled" from="Level1Options/QuitConfirmation/ConfirmationDialog" to="SoundEffects/OpenOptions" method="play"]
 [connection signal="canceled" from="Level1Options/QuitConfirmation/ConfirmationDialog" to="Level1Options/QuitConfirmation/ColorRect" method="set_visible" binds= [false]]
 [connection signal="confirmed" from="Level1Options/QuitConfirmation/ConfirmationDialog" to="." method="quit_game"]
 [connection signal="tree_entered" from="Level2Controls" to="Level2Controls" method="set_visible" binds= [false]]
+[connection signal="focus_entered" from="Level2Controls/ButtonBack" to="SoundEffects/ButtonHover" method="play"]
+[connection signal="mouse_entered" from="Level2Controls/ButtonBack" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level2Controls/ButtonBack" to="Level1Options/CentreControls/VBoxContainer/ControlsButton" method="grab_focus"]
+[connection signal="pressed" from="Level2Controls/ButtonBack" to="SoundEffects/OpenOptions" method="play"]
 [connection signal="pressed" from="Level2Controls/ButtonBack" to="Level1Options" method="set_visible" binds= [true]]
 [connection signal="pressed" from="Level2Controls/ButtonBack" to="Level2Controls" method="set_visible" binds= [false]]

@@ -23,6 +23,10 @@ func _ready() -> void:
 	_connect_tooltip_signals()
 	_refresh_music_volume(sliderArr[MUSIC_SLIDER_INDEX].value)
 	_refresh_sound_effects_volume(sliderArr[SOUND_EFFECTS_SLIDER_INDEX].value)
+	scalableWindow.get_cancel_button().connect('focus_entered', $SoundEffects/ButtonHover.play)
+	scalableWindow.get_cancel_button().connect('mouse_entered', $SoundEffects/ButtonHover.play)
+	scalableWindow.get_ok_button().connect('focus_entered', $SoundEffects/ButtonHover.play)
+	scalableWindow.get_ok_button().connect('mouse_entered', $SoundEffects/ButtonHover.play)
 
 func _get_control_children_recursive_array(parentNode: Control) -> Array[Control]:
 	var result: Array[Control] = []
@@ -100,6 +104,7 @@ func _input(event: InputEvent) -> void:
 		$Level1Options.set_visible(true)
 		$Level2Controls.set_visible(false)
 		$Level1Options/CentreControls/VBoxContainer/ControlsButton.grab_focus()
+		$SoundEffects/OpenOptions.play()
 
 func try_tooltip_resize(node: Node) -> void:
 	if node is PopupPanel:

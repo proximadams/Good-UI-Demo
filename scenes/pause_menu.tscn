@@ -460,7 +460,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 74.0
 offset_bottom = 74.0
-tooltip_text = "Close the pause menu."
+tooltip_text = "Go back to the pause menu."
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
@@ -565,8 +565,8 @@ stream = ExtResource("18_ar2xs")
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/ControlsButton" to="Level2Controls" method="set_visible" binds= [true]]
 [connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="SoundEffects/ButtonHover" method="play"]
-[connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="play" binds= ["alert"]]
+[connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/SaveGameButton" to="Level1Options/GameSavedAlert/AnimationPlayer" method="seek" binds= [0.0]]
 [connection signal="focus_entered" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="mouse_entered" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="SoundEffects/ButtonHover" method="play"]
 [connection signal="pressed" from="Level1Options/CentreControls/VBoxContainer/QuitGameButton" to="Level1Options/QuitConfirmation/ConfirmationDialog" method="popup"]
